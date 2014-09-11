@@ -53,8 +53,8 @@
 
 - (void)testSwiftFormatting
 {
-    NSString *const expectedResult = @"UIColor(red:255./255., green:18./255., blue:52./255., alpha:1.)";
-    NSString *const expectedResultAlpha = @"UIColor(red:255./255., green:18./255., blue:52./255., alpha:52./255.)";
+    NSString *const expectedResult = @"UIColor(red:255.0/255.0, green:18.0/255.0, blue:52.0/255.0, alpha:1.0)";
+    NSString *const expectedResultAlpha = @"UIColor(red:255.0/255.0, green:18.0/255.0, blue:52.0/255.0, alpha:52.0/255.0)";
     LanguageType const t = LanguageTypeSwift;
     
     XCTAssertTrue([[TextUtilities colorsFromText:@"255, 18, 52" languageType:t] isEqualToString:expectedResult], @"Rgb with spaces not parsed correctly");
