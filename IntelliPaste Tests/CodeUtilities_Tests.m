@@ -30,7 +30,7 @@
 {
     NSString *snippet = [self.testMethods substringWithRange:NSMakeRange(0, 88)];
     NSArray *const expectedResult = @[@"+ (NSString *)basePath"];
-
+    
     XCTAssertEqualObjects([CodeUtilities methodsFromText:snippet], expectedResult, "Text with initial range should parse correctly");
     
     snippet = [self.testMethods substringWithRange:NSMakeRange(44, 22)];
@@ -68,7 +68,7 @@
     XCTAssertEqualObjects([CodeUtilities methodsFromText:snippet], expectedResult, "Text should parse correctly");
     
     snippet = [self.testMethods substringWithRange:NSMakeRange(0, 280)];
-    XCTAssertEqualObjects([CodeUtilities methodsFromText:snippet], expectedResult, "Text two methods should parse correctly");
+    XCTAssertEqualObjects([CodeUtilities methodsFromText:snippet], expectedResult, "Text with two methods should parse correctly");
 }
 
 - (void)testParsingMethodWithPragmaMark
@@ -84,7 +84,7 @@
     NSArray *const expectedResult = @[@"- (BOOL)tinyMethod"];
     
     NSString *snippet = [self.testMethods substringWithRange:NSMakeRange(550, 19)];
-    XCTAssertEqualObjects([CodeUtilities methodsFromText:snippet], expectedResult, "Text with from header should parse correctly");
+    XCTAssertEqualObjects([CodeUtilities methodsFromText:snippet], expectedResult, "Text with a single method from header should parse correctly");
 }
 
 - (void)testParsingMultipleHeaderFileMethods
@@ -92,7 +92,7 @@
     NSArray *const expectedResult = @[@"- (BOOL)tinyMethod", @"- (BOOL)tinyMethod2"];
     
     NSString *snippet = [self.testMethods substringWithRange:NSMakeRange(550, 40)];
-    XCTAssertEqualObjects([CodeUtilities methodsFromText:snippet], expectedResult, "Text with from header should parse correctly");
+    XCTAssertEqualObjects([CodeUtilities methodsFromText:snippet], expectedResult, "Text with two methods from header should parse correctly");
 }
 
 @end
