@@ -24,3 +24,8 @@
 {
     return YES;
 }
+
+//Header file style
+
+- (BOOL)tinyMethod;
+- (BOOL)tinyMethod2;

@@ -16,12 +16,20 @@
     NSCharacterSet *const characterSetHeaders = [NSCharacterSet characterSetWithCharactersInString:@"+-;#"];
     
     NSRange range = NSMakeRange(0, text.length);
-    NSArray *methods = [self methodsFromText:text range:&range characterSet:characterSetMethods isRoot:YES];
+    NSArray *methodsMethod = [self methodsFromText:text range:&range characterSet:characterSetMethods isRoot:YES];
+    NSArray *methodsHeader = [self methodsFromText:text range:&range characterSet:characterSetHeaders isRoot:YES];
     
-    if (methods.count == 0) {
-        methods = [self methodsFromText:text range:&range characterSet:characterSetHeaders isRoot:YES];
+    if (methodsMethod.count > methodsHeader.count) {
+        return methodsMethod;
+    } else if (methodsHeader.count > methodsMethod.count) {
+        return methodsHeader;
+    } else {
+        NSInteger methodCharacterLength = [[methodsMethod valueForKeyPath:@"@sum.length"] integerValue];
+        NSInteger headerCharacterLength = [[methodsHeader valueForKeyPath:@"@sum.length"] integerValue];
+        return headerCharacterLength > methodCharacterLength ? methodsMethod : methodsHeader;
     }
-    return methods;
+    
+    return methodsHeader.count >= methodsMethod.count ? methodsHeader : methodsMethod;
 }
 
 + (NSArray *)methodsFromText:(NSString *)text range:(NSRangePointer)rangePointer characterSet:(NSCharacterSet *)characterSet isRoot:(BOOL)isRoot

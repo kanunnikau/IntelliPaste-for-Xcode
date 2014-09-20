@@ -210,7 +210,7 @@
 		E1D6A11519267AEC00B425B5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Cane Media Limited";
 				TargetAttributes = {
 					E15335E319367A1B00E45E3A = {
@@ -313,6 +313,7 @@
 		E15335F219367A1B00E45E3A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
@@ -333,6 +334,7 @@
 		E15335F319367A1B00E45E3A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
@@ -382,7 +384,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Application Support/Developer/Shared/Xcode/Plug-ins";
 				MACH_O_TYPE = mh_bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				STRIP_STYLE = "non-global";
 			};
