@@ -79,4 +79,20 @@
     XCTAssertEqualObjects([CodeUtilities methodsFromText:snippet], expectedResult, "Text with pragma mark should parse correctly");
 }
 
+- (void)testParsingHeaderFileMethod
+{
+    NSArray *const expectedResult = @[@"- (BOOL)tinyMethod"];
+    
+    NSString *snippet = [self.testMethods substringWithRange:NSMakeRange(550, 19)];
+    XCTAssertEqualObjects([CodeUtilities methodsFromText:snippet], expectedResult, "Text with from header should parse correctly");
+}
+
+- (void)testParsingMultipleHeaderFileMethods
+{
+    NSArray *const expectedResult = @[@"- (BOOL)tinyMethod", @"- (BOOL)tinyMethod2"];
+    
+    NSString *snippet = [self.testMethods substringWithRange:NSMakeRange(550, 40)];
+    XCTAssertEqualObjects([CodeUtilities methodsFromText:snippet], expectedResult, "Text with from header should parse correctly");
+}
+
 @end
