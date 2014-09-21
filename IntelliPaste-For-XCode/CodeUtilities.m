@@ -28,8 +28,6 @@
         NSInteger headerCharacterLength = [[methodsHeader valueForKeyPath:@"@sum.length"] integerValue];
         return headerCharacterLength > methodCharacterLength ? methodsMethod : methodsHeader;
     }
-    
-    return methodsHeader.count >= methodsMethod.count ? methodsHeader : methodsMethod;
 }
 
 + (NSArray *)methodsFromText:(NSString *)text range:(NSRangePointer)rangePointer characterSet:(NSCharacterSet *)characterSet isRoot:(BOOL)isRoot
