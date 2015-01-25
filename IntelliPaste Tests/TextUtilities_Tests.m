@@ -45,6 +45,7 @@
     XCTAssertTrue([[TextUtilities colorsFromText:@"255,18, 52" languageType:t] isEqualToString:expectedResult], @"Rgb with mixed spaces not parsed correctly");
     XCTAssertTrue([[TextUtilities colorsFromText:@"255 18 52" languageType:t] isEqualToString:expectedResult], @"RGB without commas not parsed correctly");
     XCTAssertTrue([[TextUtilities colorsFromText:@"255  18 52" languageType:t] isEqualToString:expectedResult], @"RGB with multiple spaces not parsed correctly");
+        XCTAssertTrue([[TextUtilities colorsFromText:@"255\t18\t52" languageType:t] isEqualToString:expectedResult], @"RGB with tabs not parsed correctly");
     
     XCTAssertNil([TextUtilities colorsFromText:@"255, 1818, 52" languageType:t], @"Invalid mid digit length should fail");
     XCTAssertNil([TextUtilities colorsFromText:@"255, 18" languageType:t], @"Missing blue channel should return nil");
