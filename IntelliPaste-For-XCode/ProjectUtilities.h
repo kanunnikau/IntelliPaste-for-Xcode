@@ -18,7 +18,8 @@ typedef NS_ENUM(NSUInteger, ProjectType) {
 typedef NS_ENUM(NSUInteger, LanguageType) {
     LanguageTypeUnknown,
     LanguageTypeObjectiveC,
-    LanguageTypeSwift
+    LanguageTypeSwift,
+    LanguageTypeInterfaceBuilder
 };
 
 + (ProjectType)projectType;
