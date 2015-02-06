@@ -58,8 +58,16 @@
     NSString *const expectedResultAlpha = @"UIColor(red:255.0/255.0, green:18.0/255.0, blue:52.0/255.0, alpha:52.0/255.0)";
     LanguageType const t = LanguageTypeSwift;
     
-    XCTAssertTrue([[TextUtilities colorsFromText:@"255, 18, 52" languageType:t] isEqualToString:expectedResult], @"Rgb with spaces not parsed correctly");
+    XCTAssertTrue([[TextUtilities colorsFromText:@"255, 18, 52" languageType:t] isEqualToString:expectedResult], @"Rgb with commas not parsed correctly");
     XCTAssertTrue([[TextUtilities colorsFromText:@"FF123434" languageType:t] isEqualToString:expectedResultAlpha], @"Alpha hex with alpha not parsed correctly");
+}
+
+- (void)testStoryboardFormatting
+{
+    NSString *const expectedResult = @"FF1234";
+    LanguageType const t = LanguageTypeInterfaceBuilder;
+    
+    XCTAssertTrue([[TextUtilities colorsFromText:@"255, 18, 52" languageType:t] isEqualToString:expectedResult], @"Rgb with commas not parsed correctly");
 }
 
 @end

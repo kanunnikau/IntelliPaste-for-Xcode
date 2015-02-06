@@ -50,9 +50,22 @@ NSString *const rgbaFormatSwift = @"%@Color(red:%u.0/255.0, green:%u.0/255.0, bl
     if (!rgb) {
         return nil;
     }
-
+    
+    uint r = (uint)[rgb[0] integerValue];
+    uint g = (uint)[rgb[1] integerValue];
+    uint b = (uint)[rgb[2] integerValue];
+    
     NSString *prefix = [ProjectUtilities projectType] == ProjectTypeMacosx ? @"NS" : @"UI";
-    return [NSString stringWithFormat:type == LanguageTypeSwift ? rgbFormatSwift : rgbFormatObjC, prefix, (uint)[rgb[0] integerValue], (uint)[rgb[1] integerValue], (uint)[rgb[2] integerValue]];
+    switch (type) {
+        case LanguageTypeObjectiveC:
+            return [NSString stringWithFormat:rgbFormatObjC, prefix, r, g, b];
+            
+        case LanguageTypeInterfaceBuilder:
+            return [NSString stringWithFormat:@"%02X%02X%02X", r, g, b];
+            
+        default:
+            return [NSString stringWithFormat:rgbFormatSwift, prefix, r, g, b];
+    }
 }
 
 + (NSString *)colorsFromHexText:(NSString *)text languageType:(LanguageType)type

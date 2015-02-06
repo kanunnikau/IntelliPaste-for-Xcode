@@ -87,6 +87,9 @@
         if ([primaryDocument isKindOfClass:NSClassFromString(@"IDESourceCodeDocument")]) {
             sourceCodeDocument = primaryDocument;
         }
+    } else if ([editor isKindOfClass:NSClassFromString(@"IBStoryboardDocumentEditor")] ||
+               [editor isKindOfClass:NSClassFromString(@"IBDocumentEditor")]) {
+        return @"storyboard";
     }
     return sourceCodeDocument ? [[sourceCodeDocument valueForKey:@"fileURL"] pathExtension] : nil;
 }
@@ -98,6 +101,8 @@
         return LanguageTypeObjectiveC;
     } else if ([fileType isEqualToString:@"swift"]) {
         return LanguageTypeSwift;
+    } else if ([fileType isEqualToString:@"storyboard"]) {
+        return LanguageTypeInterfaceBuilder;
     }
     return LanguageTypeUnknown;
 }
