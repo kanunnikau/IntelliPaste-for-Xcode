@@ -32,7 +32,7 @@ NSString *const rgbaFormatSwift = @"%@Color(red:%u.0/255.0, green:%u.0/255.0, bl
 
 + (NSString *)colorsFromRGBText:(NSString *)text languageType:(LanguageType)type
 {
-    if (text.length > 15) {
+    if (!text || text.length > 15) {
         return nil;
     }
     
