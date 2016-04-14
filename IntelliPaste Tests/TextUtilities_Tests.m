@@ -68,6 +68,7 @@
     LanguageType const t = LanguageTypeInterfaceBuilder;
     
     XCTAssertTrue([[TextUtilities colorsFromText:@"255, 18, 52" languageType:t] isEqualToString:expectedResult], @"Rgb with commas not parsed correctly");
+    XCTAssertTrue([[TextUtilities colorsFromText:@"#FF1234" languageType:t] isEqualToString:expectedResult], @"Rgb with commas not parsed correctly");
 }
 
 @end

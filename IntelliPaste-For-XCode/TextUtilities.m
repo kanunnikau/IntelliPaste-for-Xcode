@@ -55,6 +55,11 @@ NSString *const rgbaFormatSwift = @"%@Color(red:%u.0/255.0, green:%u.0/255.0, bl
     uint g = (uint)[rgb[1] integerValue];
     uint b = (uint)[rgb[2] integerValue];
     
+    return [self formatRGBString:r g:g b:b languageType:type];
+}
+
++ (NSString *)formatRGBString:(uint)r g:(uint)g b:(uint)b languageType:(LanguageType)type
+{
     NSString *prefix = [ProjectUtilities projectType] == ProjectTypeMacosx ? @"NS" : @"UI";
     switch (type) {
         case LanguageTypeObjectiveC:
@@ -65,6 +70,21 @@ NSString *const rgbaFormatSwift = @"%@Color(red:%u.0/255.0, green:%u.0/255.0, bl
             
         default:
             return [NSString stringWithFormat:rgbFormatSwift, prefix, r, g, b];
+    }
+}
+
++ (NSString *)formatRGBAString:(uint)r g:(uint)g b:(uint)b a:(uint)a languageType:(LanguageType)type
+{
+    NSString *prefix = [ProjectUtilities projectType] == ProjectTypeMacosx ? @"NS" : @"UI";
+    switch (type) {
+        case LanguageTypeObjectiveC:
+            return [NSString stringWithFormat:rgbaFormatObjC, prefix, r, g, b, a];
+            
+        case LanguageTypeInterfaceBuilder:
+            return [NSString stringWithFormat:@"%02X%02X%02X%02X", r, g, b, a];
+            
+        default:
+            return [NSString stringWithFormat:rgbaFormatSwift, prefix, r, g, b, a];
     }
 }
 
@@ -105,16 +125,14 @@ NSString *const rgbaFormatSwift = @"%@Color(red:%u.0/255.0, green:%u.0/255.0, bl
     unsigned int g = (result >> (8 + additionalShift)) - r * (1 << 8);
     unsigned int b = (result >> additionalShift) - r * (1 << 16) - g * (1 << 8);
     
-    unsigned int a = 255;
+
     if (text.length == 8) {
-        a = result - r * (1 << 24) - g * (1 << 16) - b * (1 << 8);
+        unsigned int a = result - r * (1 << 24) - g * (1 << 16) - b * (1 << 8);
+        if (a < 255) {
+            return [self formatRGBAString:r g:g b:b a:a languageType:type];
+        }
     }
-    
-    NSString *prefix = insertPrefix ? ([ProjectUtilities projectType] == ProjectTypeMacosx ? @"NS" : @"UI") : @"";
-    if (a == 255) {
-        return [NSString stringWithFormat:type == LanguageTypeSwift ? rgbFormatSwift : rgbFormatObjC, prefix, r, g, b];
-    }
-    return [NSString stringWithFormat:type == LanguageTypeSwift ? rgbaFormatSwift : rgbaFormatObjC, prefix, r, g, b, a];
+    return [self formatRGBString:r g:g b:b languageType:type];
 }
 
 @end
