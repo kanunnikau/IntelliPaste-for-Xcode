@@ -210,7 +210,7 @@
 		E1D6A11519267AEC00B425B5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Cane Media Limited";
 				TargetAttributes = {
 					E15335E319367A1B00E45E3A = {
@@ -326,6 +326,7 @@
 				);
 				INFOPLIST_FILE = "IntelliPaste Tests/IntelliPaste Tests-Info.plist";
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.canemedia.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -342,6 +343,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IntelliPaste Tests/IntelliPaste Tests-Prefix.pch";
 				INFOPLIST_FILE = "IntelliPaste Tests/IntelliPaste Tests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.canemedia.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -366,6 +368,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEPLOYMENT_LOCATION = YES;
 				DSTROOT = "$(HOME)";
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -436,6 +439,7 @@
 				GCC_PREFIX_HEADER = "IntelliPaste-For-XCode/IntelliPaste-Prefix.pch";
 				INFOPLIST_FILE = "IntelliPaste-For-XCode/IntelliPaste-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Application Support/Developer/Shared/Xcode/Plug-ins";
+				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.canemedia.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = IntelliPaste;
 				WRAPPER_EXTENSION = xcplugin;
 			};
@@ -450,6 +454,7 @@
 				GCC_PREFIX_HEADER = "IntelliPaste-For-XCode/IntelliPaste-Prefix.pch";
 				INFOPLIST_FILE = "IntelliPaste-For-XCode/IntelliPaste-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Application Support/Developer/Shared/Xcode/Plug-ins";
+				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.canemedia.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = IntelliPaste;
 				WRAPPER_EXTENSION = xcplugin;
 			};

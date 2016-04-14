@@ -69,7 +69,7 @@
 
 - (void)pasteMethods
 {
-    NSArray *classes = [[NSArray alloc] initWithObjects:[NSString class], nil];
+    NSArray *classes = @[[NSString class]];
     NSArray *strings = [[NSPasteboard generalPasteboard] readObjectsForClasses:classes options:0];
     
     NSString *clipBoardText = strings.firstObject;
