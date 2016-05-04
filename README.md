@@ -1,4 +1,4 @@
-IntelliPaste-for-XCode
+IntelliPaste-for-Xcode
 ======================
 
 ## Overview
